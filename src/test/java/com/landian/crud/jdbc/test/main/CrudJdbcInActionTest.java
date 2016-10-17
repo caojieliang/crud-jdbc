@@ -51,6 +51,12 @@ public class CrudJdbcInActionTest extends BaseServiceTest {
         logger.info(longList);
     }
 
+    @Test
+    public void queryAsListValuePage(){
+        String sql = TestSQLProvider.queryAsIntValueSQL();
+        List<Integer> list = proxyDaoSupport.queryAsIntValue(sql, 0, 2);
+        logger.info(list);
+    }
 
 
 }

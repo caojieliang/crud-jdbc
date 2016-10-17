@@ -1,7 +1,6 @@
 package com.landian.crud.jdbc.dao;
 
 import com.landian.crud.core.dao.ProxyDao;
-import com.landian.crud.core.dao.SQLPageUtils;
 import com.landian.crud.core.result.SingleValue;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,12 +54,6 @@ public class ProxyDaoJdbc implements ProxyDao {
     public List<Map<String, Object>> doFind(String sql) {
         List<Map<String, Object>> dataMapList = jdbcTemplate.queryForList(sql);
         return dataMapList;
-    }
-
-    @Override
-    public List<Map<String, Object>> doFindPage(String sql, int start, int pageSize) {
-        String sqlTarget = SQLPageUtils.appendLimit(sql, start, pageSize);
-        return doFind(sqlTarget);
     }
 
     @Override
