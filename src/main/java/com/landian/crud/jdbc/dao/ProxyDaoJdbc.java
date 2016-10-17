@@ -50,9 +50,10 @@ public class ProxyDaoJdbc implements ProxyDao {
     }
 
     @Override
-    public List<HashMap<String, Object>> doFind(String sql) {
+    public List<Map<String, Object>> doFind(String sql) {
         List<Map<String, Object>> dataMapList = jdbcTemplate.queryForList(sql);
-        return mapList2HashMapList(dataMapList);
+//        return mapList2HashMapList(dataMapList);
+        return dataMapList;
     }
 
     private List<HashMap<String, Object>> mapList2HashMapList(List<Map<String, Object>> mapList){
@@ -71,7 +72,7 @@ public class ProxyDaoJdbc implements ProxyDao {
     }
 
     @Override
-    public List<HashMap<String, Object>> doFindPage(String sql, int start, int pageSize) {
+    public List<Map<String, Object>> doFindPage(String sql, int start, int pageSize) {
         String sqlTarget = SQLPageUtils.appendLimit(sql, start, pageSize);
         return doFind(sqlTarget);
     }
