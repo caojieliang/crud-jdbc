@@ -4,7 +4,6 @@ import com.landian.crud.core.dao.ProxyDao;
 import com.landian.crud.core.dao.SQLPageUtils;
 import com.landian.crud.core.result.SingleValue;
 import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.collections.MapUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
@@ -13,7 +12,10 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Statement;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Repository
@@ -52,23 +54,7 @@ public class ProxyDaoJdbc implements ProxyDao {
     @Override
     public List<Map<String, Object>> doFind(String sql) {
         List<Map<String, Object>> dataMapList = jdbcTemplate.queryForList(sql);
-//        return mapList2HashMapList(dataMapList);
         return dataMapList;
-    }
-
-    private List<HashMap<String, Object>> mapList2HashMapList(List<Map<String, Object>> mapList){
-        if(CollectionUtils.isEmpty(mapList)){
-            return Collections.EMPTY_LIST;
-        }
-        List<HashMap<String, Object>> targetList = new ArrayList<>();
-        mapList.forEach(b -> {
-            if(MapUtils.isNotEmpty(b)){
-                HashMap<String, Object> cruMap = new HashMap<>();
-                b.entrySet().forEach(set -> cruMap.put(set.getKey(),set.getValue()));
-                targetList.add(cruMap);
-            }
-        });
-        return targetList;
     }
 
     @Override
