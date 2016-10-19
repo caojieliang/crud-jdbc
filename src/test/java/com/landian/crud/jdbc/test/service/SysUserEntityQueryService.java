@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 public class SysUserEntityQueryService extends AbstractQueryService<SysUserEntity> {
 
     @Override
-    public BeanContext<SysUserEntity> getBeanContext() {
+    public BeanContext getBeanContext() {
         return SysUserEntityContext.getBeanContext();
     }
 

@@ -58,8 +58,8 @@ public class ProxyDaoJdbc implements ProxyDao {
 
     @Override
     public int doDelete(String sql) {
-        jdbcTemplate.update(sql);
-        return 1;
+        int result = jdbcTemplate.update(sql);
+        return result;
     }
 
     @Override

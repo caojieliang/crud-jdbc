@@ -5,10 +5,12 @@ import com.landian.crud.jdbc.test.dao.TestSQLProvider;
 import com.landian.crud.jdbc.test.entity.SysUserEntity;
 import com.landian.crud.jdbc.test.service.SysUserEntityQueryService;
 import com.landian.crud.jdbc.test.service.SysUserEntityUpdateService;
+import com.landian.crud.jdbc.test.utils.OpenSourceUtils;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -56,6 +58,13 @@ public class CrudJdbcInActionTest extends BaseServiceTest {
         String sql = TestSQLProvider.queryAsIntValueSQL();
         List<Integer> list = proxyDaoSupport.queryAsIntValue(sql, 0, 2);
         logger.info(list);
+    }
+
+    @Test
+    public void deleteSysUserEntityByIds(){
+        List<Integer> ids = OpenSourceUtils.asList(4,7,8);
+        int result = sysUserEntityUpdateService.deleteSysUserEntityByIds(ids);
+        logger.info(result);
     }
 
 
