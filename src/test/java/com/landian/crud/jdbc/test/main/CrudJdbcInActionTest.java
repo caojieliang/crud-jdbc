@@ -45,6 +45,13 @@ public class CrudJdbcInActionTest extends BaseServiceTest {
     }
 
     @Test
+    public void save2(){
+        SysUserEntity sysUserEntity = SysUserEntity.builder().userName("~`/><,.!@#$%^&*()_+'\"").loginName("李").build();
+        SysUserEntity save = sysUserEntityUpdateService.save(sysUserEntity);
+        logger.info(save);
+    }
+
+    @Test
     public void queryAsListValue(){
         String sql = TestSQLProvider.queryAsIntValueSQL();
         List<Integer> intList = proxyDaoSupport.queryAsIntValue(sql);
