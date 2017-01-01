@@ -11,6 +11,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -40,13 +41,6 @@ public class CrudJdbcInActionTest extends BaseServiceTest {
     @Test
     public void save(){
         SysUserEntity sysUserEntity = SysUserEntity.builder().userName("Ajdbc").loginName("李").build();
-        SysUserEntity save = sysUserEntityUpdateService.save(sysUserEntity);
-        logger.info(save);
-    }
-
-    @Test
-    public void save2(){
-        SysUserEntity sysUserEntity = SysUserEntity.builder().userName("~`/><,.!@#$%^&*()_+'\"").loginName("李").build();
         SysUserEntity save = sysUserEntityUpdateService.save(sysUserEntity);
         logger.info(save);
     }

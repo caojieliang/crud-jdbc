@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Builder;
 
+import java.util.Date;
+
 /**
  */
 @Data
@@ -25,6 +27,10 @@ public class SysUserEntity {
      * userName
      */
     private String userName;
+    /**
+     * createTime
+     */
+    private Date createTime;
 
 
 }

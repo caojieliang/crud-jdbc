@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.PreparedStatementSetter;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Date;
 
 /**
  */
@@ -20,15 +21,13 @@ public class SpecialCodeTest extends BaseServiceTest {
 
     @Test
     public void test1(){
-        // INSERT INTO sys_user (loginName, userName) VALUES ('李', '~`/><,.!@#$%^&*()_+'"')
-        // INSERT INTO sys_user (loginName, userName) VALUES (?, ?)
-//        String insertSql = "insert into test(name) values (?)";
-        String insertSql = "INSERT INTO sys_user (loginName, userName) VALUES (?, ?)";
+        String insertSql = "INSERT INTO sys_user (loginName, userName, createTime) VALUES (?, ?, ?)";
         int count = jdbcTemplate.update(insertSql, new PreparedStatementSetter() {
             @Override
             public void setValues(PreparedStatement pstmt) throws SQLException {
-                pstmt.setObject(1, "name4");
+                pstmt.setObject(1, "date");
                 pstmt.setObject(2, "~`/><,.!@#$%^&*()_+'\"");
+                pstmt.setObject(3, new Date());
             }});
         logger.info(count);
     }
